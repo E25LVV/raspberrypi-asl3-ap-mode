@@ -45,6 +45,47 @@ Raspberry Pi จะปล่อยสัญญาณ Wi-Fi ของตัวเ
 - Temporary RF Site
 
 ---
+### Example Network Topology
+
+ตัวอย่าง topology ของระบบ:
+
+Internet
+    │
+    │ (optional)
+    │
+Raspberry Pi (AllStarLink 3)
+├── Wi-Fi AP Mode
+├── hostapd
+├── dnsmasq
+└── SSH Server
+    │
+    ├── Mobile Phone
+    ├── Laptop
+    └── Tablet
+
+---
+
+แนวคิดของระบบนี้คือ:
+
+Raspberry Pi จะสร้าง private management network ของตัวเอง
+เพื่อให้สามารถบริหาร node ได้โดยตรงผ่าน Wi-Fi
+
+ข้อดีของแนวทางนี้:
+- ไม่ต้องพึ่ง router ภายนอก
+- เหมาะกับงาน portable
+- เหมาะกับงานภาคสนาม
+- ลดปัญหา IP เปลี่ยน
+- เชื่อมต่อ SSH ได้ง่ายจากมือถือ
+
+---
+
+ระบบนี้ไม่ได้ออกแบบมาเพื่อ:
+- ปล่อย Internet hotspot ขนาดใหญ่
+- รองรับ client จำนวนมาก
+- ใช้งานแทน enterprise Wi-Fi system
+
+เป้าหมายหลักคือ:
+"ระบบบริหาร RF Node ผ่าน Wi-Fi ส่วนตัว"
 
 ## Before You Start
 
