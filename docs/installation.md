@@ -89,13 +89,43 @@ Raspberry Pi จะสร้าง private management network ของตัว
 
 ## Before You Start
 
-ก่อนเริ่มติดตั้ง ควรตรวจสอบ:
+ก่อนเริ่มติดตั้ง AP Mode
+ควรตรวจสอบและเตรียมระบบให้พร้อมก่อนทุกครั้ง
 
-- ระบบสามารถเชื่อมต่อ Internet ได้
-- SSH ทำงานปกติ
-- อัปเดตระบบเรียบร้อย
-- สำรอง configuration สำคัญไว้ก่อน
+การข้ามขั้นตอนเหล่านี้
+อาจทำให้:
+- SSH เข้าไม่ได้
+- Wi-Fi ใช้งานไม่ได้
+- network configuration ผิดพลาด
+- ต้องแก้ระบบผ่าน local console
 
+---
+
+### Recommended Preparation
+
+แนะนำให้เตรียม:
+
+- Keyboard และ HDMI สำหรับ recovery กรณี network มีปัญหา
+- สำรองไฟล์ configuration สำคัญ
+- ใช้ Power Supply ที่เสถียร
+- อัปเดตระบบให้เรียบร้อยก่อนเริ่ม
+
+---
+
+### Verify Wi-Fi Interface
+
+ตรวจสอบชื่อ Wi-Fi interface ก่อนทุกครั้ง
+
+ตัวอย่าง interface ที่พบบ่อย:
+
+- wlan0
+- wlan1
+
+สามารถตรวจสอบได้ด้วยคำสั่ง:
+
+```bash
+ip addr
+```
 ---
 
 ## Package Installation
