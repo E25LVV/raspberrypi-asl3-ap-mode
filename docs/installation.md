@@ -7,6 +7,29 @@ This guide explains how to turn Raspberry Pi into a private Wi-Fi AP for portabl
 คู่มือนี้อธิบายวิธีเปลี่ยน Raspberry Pi ให้เป็น Wi-Fi AP ส่วนตัว
 สำหรับใช้งาน AllStarLink 3 แบบ portable
 และบริหารระบบผ่าน SSH จากมือถือหรือโน้ตบุ๊ก
+---
+
+## Before You Start
+
+ก่อนเริ่มติดตั้ง AP Mode ควรตรวจสอบและเตรียมระบบให้พร้อมก่อนทุกครั้ง
+
+การตั้งค่า AP Mode จะเปลี่ยนพฤติกรรม network ของ Raspberry Pi  
+หากตั้งค่าผิด อาจทำให้:
+
+- SSH เข้าไม่ได้
+- Wi-Fi ใช้งานไม่ได้
+- network configuration ผิดพลาด
+- ต้องแก้ระบบผ่าน local console
+
+แนะนำให้เตรียม:
+
+- HDMI และ Keyboard สำหรับ recovery
+- สำรองไฟล์ configuration สำคัญ
+- ใช้ Power Supply ที่เสถียร
+- อัปเดตระบบให้เรียบร้อยก่อนเริ่ม
+
+สำหรับ AllStarLink 3 production node  
+แนะนำให้ทดสอบบนระบบสำรองก่อนใช้งานจริงเสมอ
 
 ---
 
@@ -126,6 +149,36 @@ Raspberry Pi จะสร้าง private management network ของตัว
 ```bash
 ip addr
 ```
+---
+
+## Verify Wi-Fi Interface
+
+ก่อนเริ่มติดตั้ง ควรตรวจสอบชื่อ Wi-Fi interface ของระบบก่อนทุกครั้ง
+
+Raspberry Pi แต่ละรุ่นอาจใช้ชื่อ interface แตกต่างกัน เช่น:
+
+- wlan0
+- wlan1
+
+บางระบบ:
+- wlan0 = internal Wi-Fi
+- wlan1 = USB Wi-Fi adapter
+
+สามารถตรวจสอบได้ด้วยคำสั่ง:
+
+```bash
+ip addr
+```
+
+ตรวจสอบให้แน่ใจว่า interface ที่จะใช้เป็น AP Mode ถูกต้องก่อนดำเนินการต่อ
+
+สำหรับ AllStarLink 3 production node  
+แนะนำให้แยก:
+- interface สำหรับ Internet uplink
+- interface สำหรับ AP Mode
+
+ออกจากกันเสมอ เพื่อป้องกัน network conflict
+
 ---
 
 ## Package Installation
