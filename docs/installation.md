@@ -445,8 +445,50 @@ systemctl status dnsmasq
 
 ## Reboot System
 
-หลังติดตั้งเสร็จ
-ควร reboot ระบบเพื่อทดสอบการทำงานจริง
+หลังติดตั้งและ configure เสร็จ
+ควร reboot ระบบเพื่อทดสอบการทำงานจริงของ AP Mode
+
+reboot ระบบ:
+
+```bash
+sudo reboot
+```
+
+หลัง reboot:
+รอประมาณ 1-2 นาที ให้ Raspberry Pi boot เสร็จสมบูรณ์
+
+จากนั้นตรวจสอบ:
+
+- Wi-Fi AP ปรากฏหรือไม่
+- มือถือหรือโน้ตบุ๊กเชื่อมต่อได้หรือไม่
+- ได้รับ IP address จาก DHCP หรือไม่
+- SSH เข้า node ได้หรือไม่
+- AllStarLink service ยังทำงานปกติหรือไม่
+
+สำหรับ production node:
+การ reboot test ถือเป็นขั้นตอนสำคัญ
+เพราะบางระบบสามารถ start service ได้ตอน manual start
+แต่ล้มเหลวหลัง reboot จริง
+
+หาก reboot แล้ว AP ไม่ขึ้น:
+- ตรวจสอบ hostapd status
+- ตรวจสอบ dnsmasq status
+- ตรวจสอบ interface name
+- ตรวจสอบ power supply ของ Raspberry Pi
+
+ตัวอย่างตรวจสอบ service:
+
+```bash
+systemctl status hostapd
+```
+
+```bash
+systemctl status dnsmasq
+```
+
+สำหรับ portable node ภาคสนาม:
+แนะนำให้ทดสอบ reboot จริงหลายรอบ
+ก่อนนำไปใช้งานนอกสถานี
 
 ---
 
