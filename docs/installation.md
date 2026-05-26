@@ -552,14 +552,37 @@ ssh pi@192.168.50.1
 
 ## Troubleshooting
 
-หากระบบทำงานผิดปกติ:
-
-- ตรวจสอบ hostapd status
-- ตรวจสอบ dnsmasq status
-- ตรวจสอบ IP address
-- ตรวจสอบ Wi-Fi interface
+หากระบบทำงานผิดปกติ
+แนะนำให้ตรวจสอบตามอาการที่พบจริง
 
 ---
+
+### AP ไม่ปรากฏ
+
+ตรวจสอบ:
+
+- hostapd ทำงานหรือไม่
+- Wi-Fi interface ถูกต้องหรือไม่
+- Raspberry Pi รองรับ AP Mode หรือไม่
+- power supply เสถียรหรือไม่
+
+ตรวจสอบ service:
+
+```bash
+systemctl status hostapd
+```
+
+ตรวจสอบ interface:
+
+```bash
+ip addr
+```
+
+บางกรณี interface อาจไม่ใช่ wlan0
+
+---
+
+
 
 ## Rollback Procedure
 
