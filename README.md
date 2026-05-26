@@ -27,6 +27,16 @@ Turn Raspberry Pi into a private Wi-Fi AP for portable AllStarLink 3 operation a
 
 ---
 
+# Documentation
+
+ลำดับการอ่านแนะนำ:
+
+1. installation.md
+2. configuration.md
+3. verification.md
+4. troubleshooting.md
+5. rollback.md
+   
 # Features
 
 * Portable Wi-Fi AP mode
