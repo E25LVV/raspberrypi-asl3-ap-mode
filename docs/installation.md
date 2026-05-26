@@ -603,3 +603,10 @@ ip addr
 - reboot ระบบใหม่
 
 ---
+## Next Step
+
+หลังติดตั้งเสร็จ:
+
+- ไปต่อที่ configuration.md
+- ตรวจสอบระบบที่ verification.md
+- หากพบปัญหา ดู troubleshooting.md
