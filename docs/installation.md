@@ -185,10 +185,50 @@ ip addr
 
 ขั้นตอนนี้จะติดตั้ง package ที่จำเป็นสำหรับ AP Mode
 
-ตัวอย่าง package ที่ใช้งาน:
 
-- hostapd
-- dnsmasq
+ก่อนติดตั้ง package แนะนำให้อัปเดตระบบก่อนทุกครั้ง
+
+สำหรับ AllStarLink 3 production node:
+ควรตรวจสอบว่าระบบ stable และไม่มี net กำลังใช้งานอยู่ก่อน update package
+
+ตรวจสอบ package update:
+
+```bash
+sudo apt update
+```
+
+อัปเกรด package:
+
+```bash
+sudo apt upgrade -y
+```
+
+หาก kernel หรือ network package ถูกอัปเดต
+แนะนำให้ reboot หลังอัปเกรดเสร็จ
+
+ติดตั้ง package สำหรับ AP Mode:
+
+```bash
+sudo apt install hostapd dnsmasq -y
+```
+
+หน้าที่ของ package:
+
+- hostapd = สร้าง Wi-Fi Access Point
+- dnsmasq = แจก DHCP และจัดการ local DNS
+
+ตรวจสอบว่าติดตั้งสำเร็จ:
+
+```bash
+systemctl status hostapd
+```
+
+```bash
+systemctl status dnsmasq
+```
+
+หาก service ยังไม่ start ถือเป็นเรื่องปกติ
+เพราะยังไม่ได้ configure AP Mode ในขั้นตอนถัดไป
 
 ---
 
