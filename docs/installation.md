@@ -287,8 +287,55 @@ Wi-Fi AP นี้ออกแบบสำหรับ:
 
 ## Configure DHCP
 
-ขั้นตอนนี้จะกำหนดระบบแจก IP address
-ให้มือถือหรือโน้ตบุ๊กที่เชื่อมต่อเข้ามา
+ขั้นตอนนี้จะกำหนด management network สำหรับ AP Mode
+
+เมื่อมือถือหรือโน้ตบุ๊กเชื่อมต่อเข้ากับ Wi-Fi AP
+ระบบจะได้รับ IP address อัตโนมัติผ่าน DHCP
+
+สำหรับ portable AllStarLink node
+แนะนำให้ใช้ private subnet แยกเฉพาะสำหรับ management network
+
+ตัวอย่าง subnet ที่นิยมใช้:
+
+```bash
+192.168.50.0/24
+```
+
+ตัวอย่าง:
+
+- Raspberry Pi node = 192.168.50.1
+- มือถือหรือโน้ตบุ๊ก = รับ IP อัตโนมัติจาก DHCP
+
+ข้อดีของการแยก subnet:
+
+- ลดปัญหา network conflict
+- SSH เข้า node ได้ง่าย
+- แยกจาก Wi-Fi บ้านหรือ hotspot
+- เหมาะกับ portable operation
+
+หาก subnet ชนกับ network อื่น
+อาจเกิดอาการ:
+
+- มือถือเชื่อม Wi-Fi ได้ แต่ SSH ไม่เข้า
+- เข้า Allmon ไม่ได้
+- route ผิดพลาด
+- node หลุดจาก management network
+
+สำหรับ mobile SSH operation
+แนะนำให้จด IP address ของ node ไว้เสมอ
+
+ตัวอย่าง:
+
+```bash
+192.168.50.1
+```
+
+ในกรณี DHCP มีปัญหา
+ยังสามารถ SSH เข้า node แบบ manual ได้
+
+สำหรับ production node ภาคสนาม
+ควรหลีกเลี่ยงการเปลี่ยน subnet บ่อย
+เพื่อลดปัญหาการจำค่า network ของอุปกรณ์
 
 ---
 
