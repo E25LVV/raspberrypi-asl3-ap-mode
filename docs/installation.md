@@ -341,8 +341,58 @@ Wi-Fi AP นี้ออกแบบสำหรับ:
 
 ## Configure SSH Access
 
-ขั้นตอนนี้จะเปิดให้บริหาร Raspberry Pi ผ่าน SSH
-จากมือถือหรือโน้ตบุ๊กผ่าน Wi-Fi AP
+ขั้นตอนนี้จะเปิดให้บริหาร Raspberry Pi ผ่าน SSH ผ่าน Wi-Fi AP
+
+SSH ช่วยให้สามารถ:
+
+- บริหาร node จากมือถือ
+- remote maintenance
+- ตรวจสอบ log
+- restart service
+- recovery ระบบเบื้องต้น
+
+สำหรับ portable AllStarLink node
+SSH ถือเป็นเครื่องมือหลักในการบริหารระบบ
+
+แนะนำ application สำหรับ mobile SSH:
+
+- Termius
+- JuiceSSH
+- PuTTY
+- OpenSSH
+
+ตัวอย่างการเชื่อมต่อ:
+
+```bash
+ssh pi@192.168.50.1
+```
+
+ตัวอย่างนี้:
+
+- pi = username ของ Raspberry Pi
+- 192.168.50.1 = IP address ของ node
+
+สำหรับ production node
+แนะนำให้กำหนด IP ของ node ให้คงที่เสมอ
+เพื่อให้ SSH ได้ง่ายและลดปัญหาการจำค่า network
+
+หาก SSH เข้าไม่ได้ ให้ตรวจสอบ:
+
+- มือถือเชื่อมต่อ AP ถูกตัวหรือไม่
+- subnet ชนกับ network อื่นหรือไม่
+- firewall หรือ service SSH ทำงานอยู่หรือไม่
+- Raspberry Pi ยัง online อยู่หรือไม่
+
+ในกรณี emergency recovery:
+
+- ใช้ HDMI + Keyboard
+- ใช้ local console
+- ตรวจสอบ IP address ใหม่
+- reboot node หากจำเป็น
+
+สำหรับ node ภาคสนาม
+ควรทดสอบ SSH ผ่านมือถือจริงก่อนใช้งานทุกครั้ง
+
 
 ---
 
