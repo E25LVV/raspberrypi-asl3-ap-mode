@@ -234,14 +234,54 @@ systemctl status dnsmasq
 
 ## Configure Wi-Fi AP
 
-ขั้นตอนนี้จะกำหนดค่า Wi-Fi Access Point
+ขั้นตอนนี้จะกำหนดค่า Wi-Fi Access Point สำหรับบริหาร AllStarLink node
 
-ระบบจะสร้าง:
-- SSID
-- Password
-- Wi-Fi Channel
+Wi-Fi AP นี้ออกแบบสำหรับ:
 
-สำหรับการเชื่อมต่อแบบ private management network
+- SSH บริหาร node
+- maintenance
+- portable operation
+- emergency recovery
+
+ไม่แนะนำให้ใช้เป็น public hotspot หรือแชร์ Internet สำหรับผู้ใช้จำนวนมาก
+
+สำหรับ AllStarLink 3 production node
+ควรแยกหน้าที่ของ network interface ให้ชัดเจน:
+
+- interface สำหรับ Internet uplink
+- interface สำหรับ AP Mode
+
+เพื่อลดปัญหา network conflict และป้องกัน node หลุดจากระบบ
+
+แนะนำการตั้งชื่อ SSID:
+
+- ASL-Portable
+- ASL-Mobile
+- E25LVV-Node
+
+ควรตั้งชื่อที่ช่วยให้รู้ว่าเป็น node อะไร
+โดยเฉพาะเวลาทดสอบหลายระบบพร้อมกัน
+
+แนะนำการตั้งรหัสผ่าน:
+
+- ใช้รหัสผ่านยาวอย่างน้อย 8 ตัวอักษร
+- หลีกเลี่ยงรหัสผ่านสั้นหรือเดาง่าย
+- ไม่ควรใช้รหัสเดียวกับ Wi-Fi บ้าน
+
+เรื่อง Wi-Fi Channel:
+
+หากใช้งานในพื้นที่ที่มี Wi-Fi หนาแน่น
+อาจต้องเปลี่ยน channel ภายหลัง
+เพื่อลดสัญญาณรบกวนและเพิ่มเสถียรภาพของ AP
+
+สำหรับ portable node ภาคสนาม
+ควรทดสอบระยะสัญญาณจริงก่อนใช้งานทุกครั้ง
+
+ตัวอย่าง package ที่เกี่ยวข้องกับ AP Mode:
+
+- hostapd = สร้าง Wi-Fi AP
+- dnsmasq = แจก DHCP และจัดการ local DNS
+
 
 ---
 
