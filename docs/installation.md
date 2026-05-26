@@ -398,8 +398,48 @@ ssh pi@192.168.50.1
 
 ## Enable Services
 
-ขั้นตอนนี้จะเปิดใช้งาน service ที่จำเป็น
-ให้เริ่มทำงานอัตโนมัติหลัง reboot
+ขั้นตอนนี้จะเปิดใช้งาน service ให้เริ่มทำงานอัตโนมัติหลัง reboot
+
+สำหรับ portable AllStarLink node ถือเป็นขั้นตอนสำคัญ
+เพราะหากไม่ enable service ระบบ AP อาจไม่ทำงานหลังเปิดเครื่องใหม่
+
+เปิดใช้งาน service:
+
+```bash
+sudo systemctl enable hostapd
+```
+
+```bash
+sudo systemctl enable dnsmasq
+```
+
+เริ่ม service ทันทีโดยไม่ต้อง reboot:
+
+```bash
+sudo systemctl start hostapd
+```
+
+```bash
+sudo systemctl start dnsmasq
+```
+
+ตรวจสอบสถานะ service:
+
+```bash
+systemctl status hostapd
+```
+
+```bash
+systemctl status dnsmasq
+```
+
+หาก service ยังไม่ start:
+- ตรวจสอบ configuration file
+- ตรวจสอบ interface name
+- ตรวจสอบว่า port หรือ service ไม่ชนกัน
+
+สำหรับ production node:
+แนะนำให้ reboot และทดสอบ AP จริงทุกครั้งหลัง configuration เสร็จ
 
 ---
 
