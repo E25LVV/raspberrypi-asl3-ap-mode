@@ -16,3 +16,11 @@
 
 ```bash
 ip addr show wlan0
+```
+
+# Troubleshooting
+
+หากพบปัญหา:
+
+- ดู troubleshooting.md
+- หรือ rollback ที่ rollback.md
